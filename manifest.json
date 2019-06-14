@@ -3,7 +3,7 @@
   "short_name": "DBusão",
   "theme_color": "#000000",
   "background_color": "#000000",
-  "display": "standalone",
+  "display": "fullscreen",
   "Scope": "/",
   "start_url": "/",
   "icons": [
