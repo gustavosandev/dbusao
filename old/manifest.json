@@ -1,11 +1,12 @@
 {
-  "name": "DBusão",
+  "name": "DBusão", 
   "short_name": "DBusão",
   "theme_color": "#000000",
   "background_color": "#000000",
   "display": "fullscreen",
   "Scope": "/",
-  "start_url": "/Primeiro%20PWA%20DBusao/index.html",
+  "orientation": "portrait-primary",
+  "start_url": "./index.html",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",

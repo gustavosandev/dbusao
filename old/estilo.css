@@ -1,0 +1,25 @@
+@media all and (display-mode: fullscreen) {
+  body {
+    margin: 0;
+    border: 5px solid black;
+
+  }
+}
+
+.container-fluid{
+	background-color: #A9A9A9;
+}
+
+th{
+	background-color: #C0C0C0;
+}
+td{
+	background-color: #D3D3D3;
+	border-bottom: 1px solid;
+}
+.footer-color{
+	background-color: red;
+}
+footer{
+	background-color: #4371E8;
+}

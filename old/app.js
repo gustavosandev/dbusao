@@ -1,7 +1,8 @@
 window.addEventListener('load', e => {
-	new PWAConfApp();
+	//new PWAConfApp();
 	registerSW();(1)
 });
+
 
 async function registerSW() { 
   if ('serviceWorker' in navigator) { 
@@ -14,3 +15,10 @@ async function registerSW() {
     document.querySelector('.alert').removeAttribute('hidden'); 
   }
 }
+
+
+window.addEventListener('appinstalled', (evt) => {
+  app.logEvent('a2hs', 'installed');
+});
+  
+ 

@@ -9,7 +9,7 @@ self.addEventListener('install', function (event) {
         '/styles.css',
         '/app.js',
         '/manifest.js',
-        '/vendor.js',
+       // '/vendor.js',
         '/bootstrap.min.css',
       ]);
     })

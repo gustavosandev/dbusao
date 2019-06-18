@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt">
   <head>
-		<title>DBusão</title>
-		<meta charset="utf-8">
-		<link rel="icon" sizes="192x192" href="icon.png">
-		<link rel="apple-touch-icon" href="touch-icon-iphone.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
-	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	    <link rel="stylesheet" type="text/css" href="estilo.css">
-		<link rel="manifest" crossorigin="use-credentials" href="manifest.json">
-		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
-		<meta name="theme-color" content="#000000">
-		<meta name="Description" content="Horários de ônibus">
+	<title>DBusão</title>
+	<meta charset="utf-8">
+	<link rel="icon" sizes="192x192" href="icon.png">
+	<link rel="apple-touch-icon" href="touch-icon-iphone.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="manifest" crossorigin="use-credentials" href="manifest.json">
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<meta name="theme-color" content="#000000">
+	<meta name="Description" content="Horários de ônibus">
   </head>
   <body>
   	<header>
-  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
+  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		  <a class="navbar-brand" href="#">
 		    <img src="bus.png" width="35" height="35" alt="icone">
 		  </a>
@@ -45,11 +45,36 @@
 		      <li class="nav-item">
 		        <a class="nav-link" href="#">Porto Alegre</a>
 		      </li>
+		<!--      
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Dropdown
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a class="dropdown-item" href="#">Action</a>
+		          <a class="dropdown-item" href="#">Another action</a>
+		          <div class="dropdown-divider"></div>
+		          <a class="dropdown-item" href="#">Something else here</a>
+		        </div>
+		      </li> 
+		      <li class="nav-item">
+		        <a class="nav-link disabled" href="#">Fale Conosco</a>
+		      </li>
+		    </ul>
+		    <form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		    -->
 		  </div>
 		</nav>
   	</header>
     <section class="container-fluid">
     	<div class="container">
+    		<div class="alert" role="alert" hidden>
+		      Your browser does not support ServiceWorker. The app will not be available
+		      offline.
+		    </div>
     		<div class="row">
     			<div class="col">
     				<h4 class="alert-dark text-center my-0 py-1">Horários de Ônibus</h4>
@@ -169,7 +194,6 @@
     			</div>
     		</div>
     	</div>
-    	<button class="add-button">Add to home screen</button>
     </section>
     <footer >
     	<div class="container-fluid">
@@ -189,43 +213,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(function () {
-        console.log('service worker registered');
-      })
-      .catch(function () {
-        console.warn('service worker failed');
-      });
-  }
+	if ('serviceWorker' in navigator) {
+	    navigator.serviceWorker.register('/sw.js')
+	      .then(function () {
+	        console.log('service worker registered');
+	      })
+	      .catch(function () {
+	        console.warn('service worker failed');
+	      });
+	} 
 
-  let deferredPrompt;
-const addBtn = document.querySelector('.add-button');
-addBtn.style.display = 'none';
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI to notify the user they can add to home screen
-  addBtn.style.display = 'block';
-
-  addBtn.addEventListener('click', (e) => {
-    // hide our user interface that shows our A2HS button
-    addBtn.style.display = 'none';
-    // Show the prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        }
-        deferredPrompt = null;
-      });
-  });
-});
+    
 </script>
+<script src="./app.js"></script>
 </html>
