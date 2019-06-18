@@ -1,11 +1,11 @@
 
-var CACHE_NAME = 'static-v1';
+//var CACHE_NAME = 'static-v1';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open(CACHE_NAME).then(function(cache) {
+   caches.open('video-store').then(function(cache) {
      return cache.addAll([
-        '/',
+        '/dbusao/',
         '/index.html',
         '/estilo.css',
         '/index.js',
@@ -24,6 +24,25 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+/*
+var CACHE_NAME = 'static-v1';
+
+self.addEventListener('install', function(e) {
+ e.waitUntil(
+   caches.open(CACHE_NAME).then(function(cache) {
+     return cache.addAll([
+        '/',
+        '/index.html',
+        '/estilo.css',
+        '/index.js',
+        '/manifest.json',
+        '/bootstrap.min.css',
+     ]);
+   })
+ );
+});
+*/
 
 
 
