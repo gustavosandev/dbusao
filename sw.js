@@ -16,7 +16,6 @@ self.addEventListener('install', function(e) {
  );
 });
 
-
 self.addEventListener('fetch', function(e) {
   console.log(e.request.url);
   e.respondWith(
@@ -29,32 +28,4 @@ self.addEventListener('fetch', function(e) {
 
 
 
-/*
-var CACHE_NAME = 'static-v1';
 
-self.addEventListener('install', function (event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles.css',
-        '/app.js',
-        '/manifest.js',
-        '/vendor.js',
-        '/bootstrap.min.css',
-      ]);
-    })
-  )
-});
-
-
-
-
-self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request).then(function (cachedResponse) {
-      return cachedResponse || fetch(event.request);
-    })
-  );
-}); */
