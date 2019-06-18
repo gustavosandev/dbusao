@@ -16,20 +16,6 @@ self.addEventListener('install', function(e) {
  );
 });
 
-self.addEventListener('activate', function activator(event) {
-  event.waitUntil(
-    caches.keys().then(function (keys) {
-      return Promise.all(keys
-        .filter(function (key) {
-          return key.indexOf(CACHE_NAME) !== 0;
-        })
-        .map(function (key) {
-          return caches.delete(key);
-        })
-      );
-    })
-  );
-});
 
 self.addEventListener('fetch', function(e) {
   console.log(e.request.url);
