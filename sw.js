@@ -1,9 +1,9 @@
 
-//var CACHE_NAME = 'static-v1';
+var CACHE_NAME = 'static-v1';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('video-store').then(function(cache) {
+   caches.open(CACHE_NAME).then(function(cache) {
      return cache.addAll([
         '/dbusao/',
         '/index.html',
@@ -16,6 +16,18 @@ self.addEventListener('install', function(e) {
  );
 });
 
+/* Cache on install
+this.addEventListener("install", event => {
+  this.skipWaiting();
+
+  event.waitUntil(
+    caches.open(staticCacheName)
+      .then(cache => {
+        return cache.addAll(filesToCache);
+    })
+  )
+}); */
+
 self.addEventListener('fetch', function(e) {
   console.log(e.request.url);
   e.respondWith(
@@ -24,6 +36,22 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+self.addEventListener('activate', function activator(event) {
+  event.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys
+        .filter(function (key) {
+          return key.indexOf(CACHE_NAME) !== 0;
+        })
+        .map(function (key) {
+          return caches.delete(key);
+        })
+      );
+    })
+  );
+});
+
 
 /*
 var CACHE_NAME = 'static-v1';
