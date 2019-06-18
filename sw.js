@@ -8,7 +8,7 @@ self.addEventListener('install', function(e) {
        '/',
         '/index.html',
         '/styles.css',
-        '/app.js',
+        '/index.js',
         '/manifest.js',
         '/vendor.js',
         '/bootstrap.min.css',
