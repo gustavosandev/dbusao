@@ -16,15 +16,6 @@ self.addEventListener('install', function(e) {
  );
 });
 
-self.addEventListener('fetch', function(e) {
-  console.log(e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
-});
-
 self.addEventListener('activate', function activator(event) {
   event.waitUntil(
     caches.keys().then(function (keys) {
@@ -39,6 +30,17 @@ self.addEventListener('activate', function activator(event) {
     })
   );
 });
+
+self.addEventListener('fetch', function(e) {
+  console.log(e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    })
+  );
+});
+
+
 
 
 /*
