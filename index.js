@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/Primeiro%20PWA%20DBusao/sw.js')
+    navigator.serviceWorker.register('/dbusao/sw.js')
       .then(function () {
         console.log('service worker registered');
       })
