@@ -1,15 +1,15 @@
 
-var CACHE_NAME = 'static-v1';
+//var CACHE_NAME = 'static-v1';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open(CACHE_NAME).then(function(cache) {
+   caches.open('CACHE_NAME').then(function(cache) {
      return cache.addAll([
         '/',
         '/index.html',
         '/estilo.css',
         '/index.js',
-        '/manifest.js',
+        '/manifest.json',
        // '/vendor.js',
         '/bootstrap.min.css',
      ]);
