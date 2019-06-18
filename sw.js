@@ -5,12 +5,12 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open(CACHE_NAME).then(function(cache) {
      return cache.addAll([
-       '/',
+        '/',
         '/index.html',
-        '/styles.css',
+        '/estilo.css',
         '/index.js',
         '/manifest.js',
-        '/vendor.js',
+       // '/vendor.js',
         '/bootstrap.min.css',
      ]);
    })
