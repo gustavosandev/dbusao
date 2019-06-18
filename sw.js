@@ -5,7 +5,7 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open(CACHE_NAME).then(function(cache) {
      return cache.addAll([
-        ',/dbusao/',
+        './',
         './index.html',
         './estilo.css',
         './index.js',
