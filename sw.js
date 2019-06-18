@@ -1,16 +1,15 @@
 
-//var CACHE_NAME = 'static-v1';
+var CACHE_NAME = 'static-v1';
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('CACHE_NAME').then(function(cache) {
+   caches.open(CACHE_NAME).then(function(cache) {
      return cache.addAll([
         '/',
         '/index.html',
         '/estilo.css',
         '/index.js',
         '/manifest.json',
-       // '/vendor.js',
         '/bootstrap.min.css',
      ]);
    })
@@ -26,7 +25,20 @@ self.addEventListener('fetch', function(e) {
   );
 });
 
-
+self.addEventListener('activate', function activator(event) {
+  event.waitUntil(
+    caches.keys().then(function (keys) {
+      return Promise.all(keys
+        .filter(function (key) {
+          return key.indexOf(CACHE_NAME) !== 0;
+        })
+        .map(function (key) {
+          return caches.delete(key);
+        })
+      );
+    })
+  );
+});
 
 
 /*
@@ -48,20 +60,7 @@ self.addEventListener('install', function (event) {
   )
 });
 
-self.addEventListener('activate', function activator(event) {
-  event.waitUntil(
-    caches.keys().then(function (keys) {
-      return Promise.all(keys
-        .filter(function (key) {
-          return key.indexOf(CACHE_NAME) !== 0;
-        })
-        .map(function (key) {
-          return caches.delete(key);
-        })
-      );
-    })
-  );
-});
+
 
 
 self.addEventListener('fetch', function (event) {
