@@ -5,7 +5,7 @@
   "background_color": "#000000",
   "display": "fullscreen",
   "Scope": "/",
-  "start_url": "/Primeiro%20PWA%20DBusao/index.html",
+  "start_url": "/dbusao/index.html",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
