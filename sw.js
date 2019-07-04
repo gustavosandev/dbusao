@@ -7,6 +7,7 @@ self.addEventListener('install', function(e) {
      return cache.addAll([
         './',
         './index.html',
+        './icon.png',
         './estilo.css',
         './index.js',
         './manifest.json',
